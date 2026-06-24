@@ -1,0 +1,804 @@
+{
+  "as_of": "2026-06-24",
+  "method": "缠论二买 + Serenity（已排除二进三连板标的，非连板接力策略）",
+  "summary": {
+    "科创50": 50,
+    "缠论二买": 16,
+    "二买+Serenity全达标": 4,
+    "二买+卡位观察50-59": 1,
+    "Serenity强卡位≥70": 0,
+    "二买但属连板排除": 0
+  },
+  "二买且Serenity达标": [
+    {
+      "code": "688047",
+      "name": "龙芯中科",
+      "price": 139.01,
+      "chan": {
+        "signals": [
+          "回踩ZG"
+        ],
+        "zs": {
+          "zg": 133.98,
+          "zd": 125.0
+        },
+        "pos%": 156.0,
+        "last_bi": "down",
+        "ma20": 125.29
+      },
+      "serenity": {
+        "chokepoint": 67.9,
+        "chain_hit": true,
+        "keywords": [
+          "算力",
+          "risc-v"
+        ],
+        "irreplaceable": true,
+        "smallcap": true,
+        "mcap_yi": 200.0,
+        "rules_pass": 4,
+        "signal": "bullish",
+        "score": 77.3,
+        "headline": "看多核心：命中 AI 链卡点 ['算力', 'risc-v']",
+        "pass": true,
+        "tier": "B≥60"
+      },
+      "lianban": {
+        "streak": 0,
+        "is_erjin_san": false,
+        "note": ""
+      }
+    },
+    {
+      "code": "688521",
+      "name": "芯原股份",
+      "price": 92.0,
+      "chan": {
+        "signals": [
+          "回踩ZG"
+        ],
+        "zs": {
+          "zg": 90.98,
+          "zd": 84.73
+        },
+        "pos%": 116.3,
+        "last_bi": "down",
+        "ma20": 87.62
+      },
+      "serenity": {
+        "chokepoint": 67.9,
+        "chain_hit": true,
+        "keywords": [
+          "asic",
+          "gpu"
+        ],
+        "irreplaceable": true,
+        "smallcap": true,
+        "mcap_yi": 200.0,
+        "rules_pass": 4,
+        "signal": "bullish",
+        "score": 77.3,
+        "headline": "看多核心：命中 AI 链卡点 ['asic', 'gpu']",
+        "pass": true,
+        "tier": "B≥60"
+      },
+      "lianban": {
+        "streak": 0,
+        "is_erjin_san": false,
+        "note": ""
+      }
+    },
+    {
+      "code": "688256",
+      "name": "寒武纪",
+      "price": 392.48,
+      "chan": {
+        "signals": [
+          "中枢内回踩ZD"
+        ],
+        "zs": {
+          "zg": 440.45,
+          "zd": 382.09
+        },
+        "pos%": 17.8,
+        "last_bi": "down",
+        "ma20": 400.7
+      },
+      "serenity": {
+        "chokepoint": 67.9,
+        "chain_hit": true,
+        "keywords": [
+          "算力",
+          "gpu"
+        ],
+        "irreplaceable": true,
+        "smallcap": true,
+        "mcap_yi": 200.0,
+        "rules_pass": 4,
+        "signal": "bullish",
+        "score": 77.3,
+        "headline": "看多核心：命中 AI 链卡点 ['算力', 'gpu']",
+        "pass": true,
+        "tier": "B≥60"
+      },
+      "lianban": {
+        "streak": 0,
+        "is_erjin_san": false,
+        "note": ""
+      }
+    },
+    {
+      "code": "688099",
+      "name": "晶晨股份",
+      "price": 103.41,
+      "chan": {
+        "signals": [
+          "回踩ZG"
+        ],
+        "zs": {
+          "zg": 93.03,
+          "zd": 85.17
+        },
+        "pos%": 232.1,
+        "last_bi": "down",
+        "ma20": 98.47
+      },
+      "serenity": {
+        "chokepoint": 67.9,
+        "chain_hit": true,
+        "keywords": [
+          "算力",
+          "gpu"
+        ],
+        "irreplaceable": true,
+        "smallcap": true,
+        "mcap_yi": 200.0,
+        "rules_pass": 4,
+        "signal": "bullish",
+        "score": 77.3,
+        "headline": "看多核心：命中 AI 链卡点 ['算力', 'gpu']",
+        "pass": true,
+        "tier": "B≥60"
+      },
+      "lianban": {
+        "streak": 0,
+        "is_erjin_san": false,
+        "note": ""
+      }
+    }
+  ],
+  "二买+卡位观察": [
+    {
+      "code": "688008",
+      "name": "澜起科技",
+      "price": 80.03,
+      "chan": {
+        "signals": [
+          "回踩ZG"
+        ],
+        "zs": {
+          "zg": 80.15,
+          "zd": 77.34
+        },
+        "pos%": 95.9,
+        "last_bi": "down",
+        "ma20": 80.56
+      },
+      "serenity": {
+        "chokepoint": 57.0,
+        "chain_hit": true,
+        "keywords": [
+          "ddr"
+        ],
+        "irreplaceable": true,
+        "smallcap": true,
+        "mcap_yi": 200.0,
+        "rules_pass": 4,
+        "signal": "bullish",
+        "score": 77.3,
+        "headline": "看多核心：命中 AI 链卡点 ['ddr']",
+        "pass": false,
+        "tier": "C"
+      },
+      "lianban": {
+        "streak": 0,
+        "is_erjin_san": false,
+        "note": ""
+      }
+    }
+  ],
+  "全部缠论二买": [
+    {
+      "code": "688047",
+      "name": "龙芯中科",
+      "price": 139.01,
+      "chan": {
+        "signals": [
+          "回踩ZG"
+        ],
+        "zs": {
+          "zg": 133.98,
+          "zd": 125.0
+        },
+        "pos%": 156.0,
+        "last_bi": "down",
+        "ma20": 125.29
+      },
+      "serenity": {
+        "chokepoint": 67.9,
+        "chain_hit": true,
+        "keywords": [
+          "算力",
+          "risc-v"
+        ],
+        "irreplaceable": true,
+        "smallcap": true,
+        "mcap_yi": 200.0,
+        "rules_pass": 4,
+        "signal": "bullish",
+        "score": 77.3,
+        "headline": "看多核心：命中 AI 链卡点 ['算力', 'risc-v']",
+        "pass": true,
+        "tier": "B≥60"
+      },
+      "lianban": {
+        "streak": 0,
+        "is_erjin_san": false,
+        "note": ""
+      }
+    },
+    {
+      "code": "688521",
+      "name": "芯原股份",
+      "price": 92.0,
+      "chan": {
+        "signals": [
+          "回踩ZG"
+        ],
+        "zs": {
+          "zg": 90.98,
+          "zd": 84.73
+        },
+        "pos%": 116.3,
+        "last_bi": "down",
+        "ma20": 87.62
+      },
+      "serenity": {
+        "chokepoint": 67.9,
+        "chain_hit": true,
+        "keywords": [
+          "asic",
+          "gpu"
+        ],
+        "irreplaceable": true,
+        "smallcap": true,
+        "mcap_yi": 200.0,
+        "rules_pass": 4,
+        "signal": "bullish",
+        "score": 77.3,
+        "headline": "看多核心：命中 AI 链卡点 ['asic', 'gpu']",
+        "pass": true,
+        "tier": "B≥60"
+      },
+      "lianban": {
+        "streak": 0,
+        "is_erjin_san": false,
+        "note": ""
+      }
+    },
+    {
+      "code": "688256",
+      "name": "寒武纪",
+      "price": 392.48,
+      "chan": {
+        "signals": [
+          "中枢内回踩ZD"
+        ],
+        "zs": {
+          "zg": 440.45,
+          "zd": 382.09
+        },
+        "pos%": 17.8,
+        "last_bi": "down",
+        "ma20": 400.7
+      },
+      "serenity": {
+        "chokepoint": 67.9,
+        "chain_hit": true,
+        "keywords": [
+          "算力",
+          "gpu"
+        ],
+        "irreplaceable": true,
+        "smallcap": true,
+        "mcap_yi": 200.0,
+        "rules_pass": 4,
+        "signal": "bullish",
+        "score": 77.3,
+        "headline": "看多核心：命中 AI 链卡点 ['算力', 'gpu']",
+        "pass": true,
+        "tier": "B≥60"
+      },
+      "lianban": {
+        "streak": 0,
+        "is_erjin_san": false,
+        "note": ""
+      }
+    },
+    {
+      "code": "688099",
+      "name": "晶晨股份",
+      "price": 103.41,
+      "chan": {
+        "signals": [
+          "回踩ZG"
+        ],
+        "zs": {
+          "zg": 93.03,
+          "zd": 85.17
+        },
+        "pos%": 232.1,
+        "last_bi": "down",
+        "ma20": 98.47
+      },
+      "serenity": {
+        "chokepoint": 67.9,
+        "chain_hit": true,
+        "keywords": [
+          "算力",
+          "gpu"
+        ],
+        "irreplaceable": true,
+        "smallcap": true,
+        "mcap_yi": 200.0,
+        "rules_pass": 4,
+        "signal": "bullish",
+        "score": 77.3,
+        "headline": "看多核心：命中 AI 链卡点 ['算力', 'gpu']",
+        "pass": true,
+        "tier": "B≥60"
+      },
+      "lianban": {
+        "streak": 0,
+        "is_erjin_san": false,
+        "note": ""
+      }
+    },
+    {
+      "code": "688008",
+      "name": "澜起科技",
+      "price": 80.03,
+      "chan": {
+        "signals": [
+          "回踩ZG"
+        ],
+        "zs": {
+          "zg": 80.15,
+          "zd": 77.34
+        },
+        "pos%": 95.9,
+        "last_bi": "down",
+        "ma20": 80.56
+      },
+      "serenity": {
+        "chokepoint": 57.0,
+        "chain_hit": true,
+        "keywords": [
+          "ddr"
+        ],
+        "irreplaceable": true,
+        "smallcap": true,
+        "mcap_yi": 200.0,
+        "rules_pass": 4,
+        "signal": "bullish",
+        "score": 77.3,
+        "headline": "看多核心：命中 AI 链卡点 ['ddr']",
+        "pass": false,
+        "tier": "C"
+      },
+      "lianban": {
+        "streak": 0,
+        "is_erjin_san": false,
+        "note": ""
+      }
+    },
+    {
+      "code": "688027",
+      "name": "国盾量子",
+      "price": 519.91,
+      "chan": {
+        "signals": [
+          "回拉ZD确认"
+        ],
+        "zs": {
+          "zg": 628.86,
+          "zd": 547.49
+        },
+        "pos%": -33.9,
+        "last_bi": "up",
+        "ma20": 530.36
+      },
+      "serenity": {
+        "chokepoint": 6.4,
+        "chain_hit": false,
+        "keywords": [],
+        "irreplaceable": true,
+        "smallcap": true,
+        "mcap_yi": 200.0,
+        "rules_pass": 0,
+        "signal": "bearish",
+        "score": 0,
+        "headline": "看空核心：不在 AI 产业链上 —— 对我没有意义",
+        "pass": false,
+        "tier": "C"
+      },
+      "lianban": {
+        "streak": 0,
+        "is_erjin_san": false,
+        "note": ""
+      }
+    },
+    {
+      "code": "688568",
+      "name": "中科星图",
+      "price": 42.38,
+      "chan": {
+        "signals": [
+          "回踩ZG"
+        ],
+        "zs": {
+          "zg": 43.42,
+          "zd": 38.88
+        },
+        "pos%": 77.1,
+        "last_bi": "down",
+        "ma20": 45.44
+      },
+      "serenity": {
+        "chokepoint": 6.4,
+        "chain_hit": false,
+        "keywords": [],
+        "irreplaceable": true,
+        "smallcap": true,
+        "mcap_yi": 200.0,
+        "rules_pass": 0,
+        "signal": "bearish",
+        "score": 0,
+        "headline": "看空核心：不在 AI 产业链上 —— 对我没有意义",
+        "pass": false,
+        "tier": "C"
+      },
+      "lianban": {
+        "streak": 0,
+        "is_erjin_san": false,
+        "note": ""
+      }
+    },
+    {
+      "code": "688506",
+      "name": "百利天恒",
+      "price": 297.39,
+      "chan": {
+        "signals": [
+          "回踩ZG"
+        ],
+        "zs": {
+          "zg": 299.99,
+          "zd": 290.36
+        },
+        "pos%": 73.0,
+        "last_bi": "down",
+        "ma20": 308.24
+      },
+      "serenity": {
+        "chokepoint": 6.4,
+        "chain_hit": false,
+        "keywords": [],
+        "irreplaceable": true,
+        "smallcap": true,
+        "mcap_yi": 200.0,
+        "rules_pass": 0,
+        "signal": "bearish",
+        "score": 0,
+        "headline": "看空核心：不在 AI 产业链上 —— 对我没有意义",
+        "pass": false,
+        "tier": "C"
+      },
+      "lianban": {
+        "streak": 0,
+        "is_erjin_san": false,
+        "note": ""
+      }
+    },
+    {
+      "code": "688297",
+      "name": "中无人机",
+      "price": 44.61,
+      "chan": {
+        "signals": [
+          "中枢内回踩ZD"
+        ],
+        "zs": {
+          "zg": 47.03,
+          "zd": 42.72
+        },
+        "pos%": 43.9,
+        "last_bi": "down",
+        "ma20": 45.13
+      },
+      "serenity": {
+        "chokepoint": 6.4,
+        "chain_hit": false,
+        "keywords": [],
+        "irreplaceable": true,
+        "smallcap": true,
+        "mcap_yi": 200.0,
+        "rules_pass": 0,
+        "signal": "bearish",
+        "score": 0,
+        "headline": "看空核心：不在 AI 产业链上 —— 对我没有意义",
+        "pass": false,
+        "tier": "C"
+      },
+      "lianban": {
+        "streak": 0,
+        "is_erjin_san": false,
+        "note": ""
+      }
+    },
+    {
+      "code": "688271",
+      "name": "联影医疗",
+      "price": 128.01,
+      "chan": {
+        "signals": [
+          "回拉ZD确认"
+        ],
+        "zs": {
+          "zg": 139.94,
+          "zd": 136.3
+        },
+        "pos%": -227.7,
+        "last_bi": "up",
+        "ma20": 131.13
+      },
+      "serenity": {
+        "chokepoint": 6.4,
+        "chain_hit": false,
+        "keywords": [],
+        "irreplaceable": true,
+        "smallcap": true,
+        "mcap_yi": 200.0,
+        "rules_pass": 0,
+        "signal": "bearish",
+        "score": 0,
+        "headline": "看空核心：不在 AI 产业链上 —— 对我没有意义",
+        "pass": false,
+        "tier": "C"
+      },
+      "lianban": {
+        "streak": 0,
+        "is_erjin_san": false,
+        "note": ""
+      }
+    },
+    {
+      "code": "688538",
+      "name": "和辉光电",
+      "price": 2.34,
+      "chan": {
+        "signals": [
+          "回踩ZG"
+        ],
+        "zs": {
+          "zg": 2.34,
+          "zd": 2.24
+        },
+        "pos%": 100.0,
+        "last_bi": "down",
+        "ma20": 2.38
+      },
+      "serenity": {
+        "chokepoint": 6.4,
+        "chain_hit": false,
+        "keywords": [],
+        "irreplaceable": true,
+        "smallcap": true,
+        "mcap_yi": 200.0,
+        "rules_pass": 0,
+        "signal": "bearish",
+        "score": 0,
+        "headline": "看空核心：不在 AI 产业链上 —— 对我没有意义",
+        "pass": false,
+        "tier": "C"
+      },
+      "lianban": {
+        "streak": 0,
+        "is_erjin_san": false,
+        "note": ""
+      }
+    },
+    {
+      "code": "688303",
+      "name": "大全能源",
+      "price": 19.93,
+      "chan": {
+        "signals": [
+          "回踩ZG"
+        ],
+        "zs": {
+          "zg": 18.85,
+          "zd": 17.77
+        },
+        "pos%": 200.0,
+        "last_bi": "down",
+        "ma20": 19.16
+      },
+      "serenity": {
+        "chokepoint": 6.4,
+        "chain_hit": false,
+        "keywords": [],
+        "irreplaceable": true,
+        "smallcap": true,
+        "mcap_yi": 200.0,
+        "rules_pass": 0,
+        "signal": "bearish",
+        "score": 0,
+        "headline": "看空核心：不在 AI 产业链上 —— 对我没有意义",
+        "pass": false,
+        "tier": "C"
+      },
+      "lianban": {
+        "streak": 0,
+        "is_erjin_san": false,
+        "note": ""
+      }
+    },
+    {
+      "code": "688396",
+      "name": "华润微",
+      "price": 46.43,
+      "chan": {
+        "signals": [
+          "中枢内回踩ZD"
+        ],
+        "zs": {
+          "zg": 47.74,
+          "zd": 45.85
+        },
+        "pos%": 30.6,
+        "last_bi": "down",
+        "ma20": 46.31
+      },
+      "serenity": {
+        "chokepoint": 6.4,
+        "chain_hit": false,
+        "keywords": [],
+        "irreplaceable": true,
+        "smallcap": true,
+        "mcap_yi": 200.0,
+        "rules_pass": 0,
+        "signal": "bearish",
+        "score": 0,
+        "headline": "看空核心：不在 AI 产业链上 —— 对我没有意义",
+        "pass": false,
+        "tier": "C"
+      },
+      "lianban": {
+        "streak": 0,
+        "is_erjin_san": false,
+        "note": ""
+      }
+    },
+    {
+      "code": "688009",
+      "name": "中国通号",
+      "price": 4.98,
+      "chan": {
+        "signals": [
+          "回拉ZD确认"
+        ],
+        "zs": {
+          "zg": 4.96,
+          "zd": 4.93
+        },
+        "pos%": 152.2,
+        "last_bi": "up",
+        "ma20": 4.93
+      },
+      "serenity": {
+        "chokepoint": 6.4,
+        "chain_hit": false,
+        "keywords": [],
+        "irreplaceable": true,
+        "smallcap": true,
+        "mcap_yi": 200.0,
+        "rules_pass": 0,
+        "signal": "bearish",
+        "score": 0,
+        "headline": "看空核心：不在 AI 产业链上 —— 对我没有意义",
+        "pass": false,
+        "tier": "C"
+      },
+      "lianban": {
+        "streak": 0,
+        "is_erjin_san": false,
+        "note": ""
+      }
+    },
+    {
+      "code": "688012",
+      "name": "中微公司",
+      "price": 120.33,
+      "chan": {
+        "signals": [
+          "回拉ZD确认"
+        ],
+        "zs": {
+          "zg": 130.17,
+          "zd": 123.55
+        },
+        "pos%": -48.7,
+        "last_bi": "up",
+        "ma20": 117.42
+      },
+      "serenity": {
+        "chokepoint": 6.4,
+        "chain_hit": false,
+        "keywords": [],
+        "irreplaceable": true,
+        "smallcap": true,
+        "mcap_yi": 200.0,
+        "rules_pass": 0,
+        "signal": "bearish",
+        "score": 0,
+        "headline": "看空核心：不在 AI 产业链上 —— 对我没有意义",
+        "pass": false,
+        "tier": "C"
+      },
+      "lianban": {
+        "streak": 0,
+        "is_erjin_san": false,
+        "note": ""
+      }
+    },
+    {
+      "code": "688072",
+      "name": "拓荆科技",
+      "price": 151.45,
+      "chan": {
+        "signals": [
+          "回拉ZD确认"
+        ],
+        "zs": {
+          "zg": 154.92,
+          "zd": 150.63
+        },
+        "pos%": 19.1,
+        "last_bi": "up",
+        "ma20": 146.36
+      },
+      "serenity": {
+        "chokepoint": 0.8,
+        "chain_hit": false,
+        "keywords": [],
+        "irreplaceable": false,
+        "smallcap": false,
+        "mcap_yi": 185390077269.59998,
+        "rules_pass": 0,
+        "signal": "bearish",
+        "score": 0,
+        "headline": "看空核心：不在 AI 产业链上 —— 对我没有意义",
+        "pass": false,
+        "tier": "C"
+      },
+      "lianban": {
+        "streak": 0,
+        "is_erjin_san": false,
+        "note": ""
+      }
+    }
+  ],
+  "连板排除名单": [],
+  "Serenity强卡位_全成分": []
+}
