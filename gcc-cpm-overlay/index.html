@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Keeta O2O CPM × GCC 营销节点对照 2025</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d10;
+      --panel: #12171e;
+      --line: #2a313a;
+      --text: #e8edf2;
+      --muted: #8b949e;
+      --cpm: #ff8a3d;
+      --festival: #e91e8c;
+      --promo: #00bfa5;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      background: radial-gradient(1200px 600px at 20% -10%, #1a2430 0%, var(--bg) 55%);
+      color: var(--text);
+    }
+    header {
+      padding: 28px 28px 8px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    header h1 {
+      margin: 0 0 8px;
+      font-size: 1.45rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+    header p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.5;
+    }
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin: 18px 0 8px;
+      font-size: 0.85rem;
+    }
+    .legend span { display: inline-flex; align-items: center; gap: 8px; }
+    .swatch {
+      width: 18px; height: 10px; border-radius: 2px;
+      display: inline-block;
+    }
+    .swatch.line { background: var(--cpm); height: 3px; width: 22px; }
+    .swatch.festival { background: color-mix(in srgb, var(--festival) 45%, transparent); border: 1px solid var(--festival); }
+    .swatch.promo { background: color-mix(in srgb, var(--promo) 45%, transparent); border: 1px solid var(--promo); }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      padding: 12px 28px 28px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    @media (max-width: 900px) {
+      .grid { grid-template-columns: 1fr; padding: 12px 14px 28px; }
+      header { padding: 20px 14px 8px; }
+    }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 12px 12px 8px;
+      min-height: 320px;
+    }
+    .card h2 {
+      margin: 0 0 6px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #d7dde4;
+    }
+    .card canvas { width: 100% !important; height: 260px !important; }
+    .insights {
+      max-width: 1400px;
+      margin: 0 auto 40px;
+      padding: 0 28px;
+    }
+    .insights h3 { margin: 8px 0 12px; font-size: 1.05rem; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    th, td {
+      padding: 12px 14px;
+      text-align: left;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
+    th { background: #1e2833; color: var(--cpm); }
+    tr:last-child td { border-bottom: none; }
+    td { color: #d7dde4; }
+    .note {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 0.82rem;
+      line-height: 1.5;
+    }
+    .node-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 10px 0 0;
+    }
+    .chip {
+      font-size: 0.75rem;
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      color: #c5ccd4;
+      background: #0f141a;
+    }
+    .chip.festival { border-color: color-mix(in srgb, var(--festival) 50%, var(--line)); }
+    .chip.promo { border-color: color-mix(in srgb, var(--promo) 50%, var(--line)); }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Keeta O2O CPM × GCC 营销节点对照（2025）</h1>
+    <p>
+      将 TikTok for Business GCC 营销节点时间轴叠加到 Keeta O2O CPM 四象限趋势上。
+      粉色带 = 节日庆祝，青色带 = 促销旺季。悬停可看节点说明。
+    </p>
+    <div class="legend">
+      <span><i class="swatch line"></i> Keeta - O2O CPM</span>
+      <span><i class="swatch festival"></i> 节日庆祝 Festival</span>
+      <span><i class="swatch promo"></i> 促销旺季 Peak Promo</span>
+    </div>
+    <div class="node-list" id="nodeChips"></div>
+  </header>
+
+  <div class="grid">
+    <div class="card"><h2>Pangle · Android</h2><canvas id="c_pa"></canvas></div>
+    <div class="card"><h2>Pangle · iOS</h2><canvas id="c_pi"></canvas></div>
+    <div class="card"><h2>TikTok · Android</h2><canvas id="c_ta"></canvas></div>
+    <div class="card"><h2>TikTok · iOS</h2><canvas id="c_ti"></canvas></div>
+  </div>
+
+  <section class="insights">
+    <h3>节点 × CPM 对照结论</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>节点 (2025)</th>
+          <th>时间</th>
+          <th>CPM 观测对应</th>
+          <th>主要出现在</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>斋月 → 开斋节</td>
+          <td>2/28–4/1</td>
+          <td>3–4 月起量/波动上升；TikTok Android 4 月有回落</td>
+          <td>Pangle iOS 更明显</td>
+        </tr>
+        <tr>
+          <td>宰牲节 + 旅游季</td>
+          <td>6–7 月</td>
+          <td>年中最大共性抬升；Pangle iOS 6 月尖峰最显著</td>
+          <td>Pangle iOS / TikTok iOS</td>
+        </tr>
+        <tr>
+          <td>返校季 + 沙特国庆</td>
+          <td>8–9 月</td>
+          <td>9 月前后波动抬升</td>
+          <td>TikTok iOS</td>
+        </tr>
+        <tr>
+          <td>双 11</td>
+          <td>11/11</td>
+          <td>年末抬升前哨，强度弱于 White Friday / 国庆</td>
+          <td>TikTok Android 前段</td>
+        </tr>
+        <tr>
+          <td>White Friday + UAE 国庆 + DSF</td>
+          <td>11/28–12 月</td>
+          <td>TikTok Android 年末极端尖峰；整体旺季高波动</td>
+          <td>TikTok Android 最突出</td>
+        </tr>
+        <tr>
+          <td>iOS vs Android</td>
+          <td>全年</td>
+          <td>iOS 波动更高、尖峰更密；Android 更稳，但年末可爆量</td>
+          <td>全 Placement</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="note">
+      说明：原营销洞察图为 2024 节点；叠加到 2025 CPM 时，斋月/开斋节/宰牲节已按 2025 实际日期平移
+      （斋月约 2/28–3/29，开斋节约 3/30，宰牲节约 6/6）。
+      CPM 曲线为截图形态复刻的相对指数，用于节点对齐观察，不代表真实出价金额。
+      打开本页需同目录下的 <code>data.json</code>（本地可用任意静态服务器）。
+    </p>
+  </section>
+
+  <script>
+    async function main() {
+      const res = await fetch('./data.json');
+      const data = await res.json();
+      const chips = document.getElementById('nodeChips');
+      data.nodes.forEach(n => {
+        const el = document.createElement('span');
+        el.className = `chip ${n.kind}`;
+        el.textContent = `${n.name} ${n.start.slice(5)}${n.end !== n.start ? '–' + n.end.slice(5) : ''}`;
+        el.title = `${n.en}: ${n.insight}`;
+        chips.appendChild(el);
+      });
+
+      const annotations = {};
+      data.nodes.forEach((n, i) => {
+        const color = n.kind === 'festival' ? 'rgba(233,30,140,0.14)' : 'rgba(0,191,165,0.14)';
+        const border = n.kind === 'festival' ? 'rgba(233,30,140,0.45)' : 'rgba(0,191,165,0.45)';
+        annotations[`box${i}`] = {
+          type: 'box',
+          xMin: n.start,
+          xMax: n.end,
+          backgroundColor: color,
+          borderWidth: 0,
+          label: {
+            display: false,
+            content: n.name,
+            color: '#fff',
+            position: 'start'
+          }
+        };
+        annotations[`line${i}`] = {
+          type: 'line',
+          xMin: n.start,
+          xMax: n.start,
+          borderColor: border,
+          borderWidth: 1,
+          borderDash: [4, 3]
+        };
+      });
+
+      function makeChart(canvasId, values, title) {
+        const ctx = document.getElementById(canvasId);
+        new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: data.dates,
+            datasets: [{
+              label: 'Keeta - O2O CPM',
+              data: values,
+              borderColor: '#ff8a3d',
+              backgroundColor: 'transparent',
+              borderWidth: 1.6,
+              pointRadius: 0,
+              tension: 0.15
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            interaction: { mode: 'index', intersect: false },
+            plugins: {
+              legend: { display: false },
+              title: { display: false },
+              tooltip: {
+                callbacks: {
+                  afterBody(items) {
+                    const idx = items[0].dataIndex;
+                    const d = data.dates[idx];
+                    const hit = data.nodes.filter(n => d >= n.start && d <= n.end);
+                    if (!hit.length) return '';
+                    return hit.map(n => `节点: ${n.name} — ${n.insight}`);
+                  }
+                }
+              },
+              annotation: { annotations }
+            },
+            scales: {
+              x: {
+                ticks: {
+                  color: '#8b949e',
+                  maxTicksLimit: 12,
+                  callback(val, i) {
+                    const d = data.dates[i];
+                    return d && d.endsWith('-01') ? d.slice(5, 7) + '月' : '';
+                  }
+                },
+                grid: { color: '#1e2430' }
+              },
+              y: {
+                title: { display: true, text: 'CPM 相对指数', color: '#8b949e' },
+                ticks: { color: '#8b949e' },
+                grid: { color: '#1e2430' }
+              }
+            }
+          }
+        });
+      }
+
+      makeChart('c_pa', data.series.pangle_android);
+      makeChart('c_pi', data.series.pangle_ios);
+      makeChart('c_ta', data.series.tiktok_android);
+      makeChart('c_ti', data.series.tiktok_ios);
+    }
+    main().catch(err => {
+      document.body.insertAdjacentHTML('beforeend',
+        `<p style="color:#ff8a3d;padding:20px">加载 data.json 失败：${err.message}。请用静态服务器打开本目录。</p>`);
+    });
+  </script>
+</body>
+</html>
