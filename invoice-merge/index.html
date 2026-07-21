@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>发票项目合并预览</title>
+  <style>
+    :root {
+      --ink: #1a1a1a;
+      --muted: #5c5c5c;
+      --line: #c9c9c9;
+      --bg: #f7f4ef;
+      --paper: #fffdf8;
+      --accent: #8b1e1e;
+      --ok: #1f6b3a;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Source Han Sans SC", "Noto Sans SC", "PingFang SC", sans-serif;
+      background:
+        radial-gradient(ellipse at 20% 0%, #efe6d8 0%, transparent 50%),
+        radial-gradient(ellipse at 90% 10%, #e8d7c8 0%, transparent 45%),
+        var(--bg);
+      color: var(--ink);
+      line-height: 1.5;
+      padding: 32px 20px 64px;
+    }
+    h1 {
+      font-family: "Source Han Serif SC", "Noto Serif SC", "Songti SC", serif;
+      font-weight: 600;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      margin: 0 0 8px;
+      letter-spacing: 0.02em;
+    }
+    .lead { color: var(--muted); margin: 0 0 28px; max-width: 40rem; }
+    .grid { display: grid; gap: 24px; }
+    @media (min-width: 960px) {
+      .grid { grid-template-columns: 1fr 1fr; }
+    }
+    .card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      padding: 20px 22px 24px;
+    }
+    .card h2 {
+      margin: 0 0 4px;
+      font-size: 1.05rem;
+      font-weight: 600;
+    }
+    .meta { color: var(--muted); font-size: 0.9rem; margin-bottom: 14px; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.86rem;
+    }
+    th, td {
+      border: 1px solid var(--line);
+      padding: 8px 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: #f0ebe3;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+    .tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      letter-spacing: 0.04em;
+      color: var(--accent);
+      border: 1px solid color-mix(in srgb, var(--accent) 35%, white);
+      padding: 2px 8px;
+      margin-bottom: 10px;
+    }
+    .tag.ok { color: var(--ok); border-color: color-mix(in srgb, var(--ok) 35%, white); }
+    .names {
+      margin-top: 10px;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+    .names strong { color: var(--ink); font-weight: 600; }
+    footer {
+      margin-top: 28px;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <h1>发票项目合并预览</h1>
+  <p class="lead">多行「项目名称」合并到第一项：保留首项名称，金额与税额求和，不再拆成多行。</p>
+  <div class="grid" id="app">加载中…</div>
+  <footer>数据来自 <code>merged_invoices.json</code> · 运行 <code>python3 merge_items.py</code> 重新生成</footer>
+  <script>
+    const money = (n) => Number(n).toLocaleString("zh-CN", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+    function rowsHtml(items) {
+      return items.map((it) => `
+        <tr>
+          <td>${it.项目名称 ?? ""}</td>
+          <td class="num">${it.数量 ?? ""}</td>
+          <td class="num">${it.单价 != null ? Number(it.单价).toFixed(6) : ""}</td>
+          <td class="num">${money(it.金额)}</td>
+          <td class="num">${it.税率 ?? ""}</td>
+          <td class="num">${money(it.税额)}</td>
+        </tr>`).join("");
+    }
+
+    function table(items) {
+      return `
+        <table>
+          <thead>
+            <tr>
+              <th>项目名称</th>
+              <th class="num">数量</th>
+              <th class="num">单价</th>
+              <th class="num">金额</th>
+              <th class="num">税率</th>
+              <th class="num">税额</th>
+            </tr>
+          </thead>
+          <tbody>${rowsHtml(items)}</tbody>
+        </table>`;
+    }
+
+    async function main() {
+      const [beforeRes, afterRes] = await Promise.all([
+        fetch("./sample_invoices.json"),
+        fetch("./merged_invoices.json"),
+      ]);
+      const beforeData = await beforeRes.json();
+      const afterData = await afterRes.json();
+      const beforeMap = Object.fromEntries(beforeData.invoices.map((i) => [i.发票号码, i]));
+      const app = document.getElementById("app");
+      app.innerHTML = afterData.invoices.map((inv) => {
+        const raw = beforeMap[inv.发票号码];
+        const item = inv.项目明细[0] || {};
+        const ok = inv._校验?.金额一致 && inv._校验?.税额一致;
+        return `
+          <section class="card">
+            <div class="tag ${ok ? "ok" : ""}">${ok ? "合计校验通过" : "校验异常"} · ${raw.项目明细.length} → 1</div>
+            <h2>发票号码 ${inv.发票号码}</h2>
+            <div class="meta">${inv.开票日期} · 价税合计 ¥${money(inv.价税合计)}</div>
+            <p class="meta" style="margin-top:-8px">合并前</p>
+            ${table(raw.项目明细)}
+            <p class="meta" style="margin-top:16px">合并后（仅第一项）</p>
+            ${table(inv.项目明细)}
+            <div class="names">
+              <strong>保留名称：</strong>${item.项目名称}<br/>
+              <strong>原拆分项：</strong>${(item._merged_names || []).join(" / ")}
+            </div>
+          </section>`;
+      }).join("");
+    }
+    main().catch((err) => {
+      document.getElementById("app").textContent = "加载失败：" + err;
+    });
+  </script>
+</body>
+</html>
