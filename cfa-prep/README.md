@@ -2,13 +2,19 @@
 
 Mobile-friendly CFA Level I practice quiz in English, with explanations and a Wrong-Answer Book.
 
-## Open the app
+## Practice link
 
-After GitHub Pages is enabled, use:
+https://htmlpreview.github.io/?https://github.com/vincidavinci/vinci/blob/cursor/cfa-prep-quiz-85e6/cfa-prep/index.html
 
-**https://vincidavinci.github.io/vinci/cfa-prep/**
+(After merge to `main`, switch the branch segment in the URL to `main`.)
 
-Or open `cfa-prep/index.html` locally in a browser.
+## Local
+
+```bash
+python3 -m http.server 8765 --directory .
+```
+
+Open http://127.0.0.1:8765/
 
 ## Features
 
