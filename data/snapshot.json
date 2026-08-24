@@ -1,0 +1,291 @@
+{
+  "version": 4,
+  "title": "Gold Gamma Stress Dashboard",
+  "snapshotTime": "2026-08-24T19:08:00Z",
+  "asOfLabel": "2026-08-24 15:08 ET 盘中快照",
+  "sessionNote": "期货/美元/收益率取同一时段公开报价；官方C MT与TIPS、MOVE、ETF按各自最新可核实日期标注，不把周度或上一日值冒充当日。",
+  "disclaimer": "风险指数仅为监控模型，不构成投资建议。公开数据通常无法精确还原Dealer净仓位。",
+  "goldCloses": [
+    { "date": "2026-07-24", "close": 4067.6 },
+    { "date": "2026-07-27", "close": 4074.5 },
+    { "date": "2026-07-28", "close": 4036.3 },
+    { "date": "2026-07-29", "close": 4034.7 },
+    { "date": "2026-07-30", "close": 4100.1 },
+    { "date": "2026-07-31", "close": 4049.1 },
+    { "date": "2026-08-03", "close": 4033.7 },
+    { "date": "2026-08-04", "close": 4095.4 },
+    { "date": "2026-08-05", "close": 4245.8 },
+    { "date": "2026-08-06", "close": 4242.0 },
+    { "date": "2026-08-07", "close": 4340.7 },
+    { "date": "2026-08-10", "close": 4361.8 },
+    { "date": "2026-08-11", "close": 4383.0 },
+    { "date": "2026-08-12", "close": 4408.9 },
+    { "date": "2026-08-13", "close": 4363.6 },
+    { "date": "2026-08-14", "close": 4380.4 },
+    { "date": "2026-08-17", "close": 4417.8 },
+    { "date": "2026-08-18", "close": 4366.0 },
+    { "date": "2026-08-19", "close": 4489.4 },
+    { "date": "2026-08-20", "close": 4516.3 },
+    { "date": "2026-08-21", "close": 4624.1 },
+    { "date": "2026-08-24", "close": 4693.6 }
+  ],
+  "fields": {
+    "gold": {
+      "value": 4693.6,
+      "unit": "USD/oz",
+      "vintage": "intraday",
+      "asOf": "2026-08-24T19:07:50Z",
+      "source": "COMEX Gold Dec 26 (GC=F / CMX)",
+      "note": "日内高 $4,738.50。Reuters现货 15:35 GMT $4,673.20（+1.5%，当时为5/14以来高点）。"
+    },
+    "goldDayPct": {
+      "value": 0.28,
+      "unit": "%",
+      "vintage": "intraday",
+      "asOf": "2026-08-24",
+      "source": "Dec 26 vs 合约前收 $4,680.60",
+      "note": "合约仍上涨，但已从日内高回落。Reuters现货午盘曾报 +1.5%。"
+    },
+    "gold5dPct": {
+      "value": 6.23,
+      "unit": "%",
+      "vintage": "intraday",
+      "asOf": "2026-08-24",
+      "source": "COMEX连续日线 8/17 收盘 $4,417.80 → 当前",
+      "note": "连续合约5个交易日。"
+    },
+    "gold20dPct": {
+      "value": 15.19,
+      "unit": "%",
+      "vintage": "intraday",
+      "asOf": "2026-08-24",
+      "source": "COMEX连续日线 7/27 收盘 $4,074.50 → 当前",
+      "note": "约一个月涨幅，与公开报道“近月约+15%”一致。"
+    },
+    "netGexBn": {
+      "value": null,
+      "vintage": "missing",
+      "asOf": null,
+      "source": "无可靠公开Dealer簿",
+      "note": "8/24 公开源无法交叉复核 GLD/黄金期货 GEX。第三方页面互相矛盾且偏旧，故不填。"
+    },
+    "netGexPrevBn": {
+      "value": null,
+      "vintage": "missing",
+      "asOf": null,
+      "source": "无可靠公开Dealer簿"
+    },
+    "zeroGamma": {
+      "value": null,
+      "vintage": "missing",
+      "asOf": null,
+      "source": "无可靠公开Dealer簿",
+      "note": "Zero Gamma / Flip 未可靠更新。"
+    },
+    "callWall": {
+      "value": null,
+      "vintage": "missing",
+      "asOf": null,
+      "source": "无可靠公开Dealer簿",
+      "note": "Call Wall / 高OI Call 未可靠更新。"
+    },
+    "iv1m": {
+      "value": null,
+      "vintage": "missing",
+      "asOf": null,
+      "source": "GLD期权链当日未取得可核实快照"
+    },
+    "skew": {
+      "value": "",
+      "vintage": "missing",
+      "asOf": null,
+      "source": "无可靠公开偏度"
+    },
+    "move": {
+      "value": 73.4,
+      "unit": "index",
+      "vintage": "prior_close",
+      "asOf": "2026-08-21",
+      "source": "ICE BofA MOVE (^MOVE) 上一日完整交易日收盘",
+      "note": "8/24 该源未发布当日K线，不以盘中残留报价冒充当日。73.4 低于监控阈值 90。"
+    },
+    "y30": {
+      "value": 5.231,
+      "unit": "%",
+      "vintage": "intraday",
+      "asOf": "2026-08-24T18:59:52Z",
+      "source": "CBOE 30Y yield (^TYX)",
+      "note": "官方CMT 8/21 收盘 5.27%（Treasury）。CNBC盘中曾报 5.228%。"
+    },
+    "y30ChangeBp": {
+      "value": -4.5,
+      "unit": "bp",
+      "vintage": "intraday",
+      "asOf": "2026-08-24",
+      "source": "^TYX vs 8/21 收盘 5.276%"
+    },
+    "y2": {
+      "value": 4.24,
+      "unit": "%",
+      "vintage": "intraday",
+      "asOf": "2026-08-24",
+      "source": "市场2Y报价（Trading Economics 8/24）",
+      "note": "官方CMT 8/21 收盘亦为 4.24%（Treasury）。当日大致持平。"
+    },
+    "y2ChangeBp": {
+      "value": 0.0,
+      "unit": "bp",
+      "vintage": "intraday",
+      "asOf": "2026-08-24",
+      "source": "相对8/21官方CMT 4.24%"
+    },
+    "tips": {
+      "value": 2.35,
+      "unit": "%",
+      "vintage": "official",
+      "asOf": "2026-08-20",
+      "source": "FRED DFII10",
+      "note": "8/24尚无FRED官方日值。市场报价约 2.37%（Trading Economics 8/24），未覆盖官方序列。"
+    },
+    "tipsChangeBp": {
+      "value": 0,
+      "unit": "bp",
+      "vintage": "official",
+      "asOf": "2026-08-20",
+      "source": "FRED DFII10 8/19–8/20 持平于 2.35%",
+      "note": "不用未核实的盘中TIPS涨跌给 Signal D 打分。"
+    },
+    "dxy": {
+      "value": 99.021,
+      "vintage": "intraday",
+      "asOf": "2026-08-24T19:07:51Z",
+      "source": "ICE US Dollar Index (DX-Y.NYB)",
+      "note": "相对8/21收盘 98.80。"
+    },
+    "dxyChangePct": {
+      "value": 0.22,
+      "unit": "%",
+      "vintage": "intraday",
+      "asOf": "2026-08-24",
+      "source": "DXY vs 8/21 收盘 98.80"
+    },
+    "heatingOil": {
+      "value": 4.1838,
+      "unit": "USD/gal",
+      "vintage": "intraday",
+      "asOf": "2026-08-24T19:05:29Z",
+      "source": "NYMEX Heating Oil / ULSD Oct 26 (HO=F)",
+      "note": "用于计算 HO×42 − WTI。部分电讯仍引述约 $4.40/加仑，本快照以同刻期货腿为准。"
+    },
+    "wti": {
+      "value": 85.25,
+      "unit": "USD/bbl",
+      "vintage": "intraday",
+      "asOf": "2026-08-24T19:07:51Z",
+      "source": "NYMEX WTI Oct 26 (CL=F)",
+      "note": "当日约 −2.1%（前收 $87.06）。"
+    },
+    "silver": {
+      "value": 68.55,
+      "unit": "USD/oz",
+      "vintage": "intraday",
+      "asOf": "2026-08-24T19:06:40Z",
+      "source": "COMEX Silver Sep 26 (SI=F)",
+      "note": "前收 $69.53，当日银弱于金。"
+    },
+    "copper": {
+      "value": 6.596,
+      "unit": "USD/lb",
+      "vintage": "intraday",
+      "asOf": "2026-08-24T19:07:50Z",
+      "source": "COMEX Copper Sep 26 (HG=F)",
+      "note": "Gold/Copper 口径：COMEX 金价($/oz) ÷ 铜($/lb)，同一时段。"
+    },
+    "fomcHoldPct": {
+      "value": 59.3,
+      "unit": "%",
+      "vintage": "intraday",
+      "asOf": "2026-08-24T18:45:00Z",
+      "source": "CME Fed Funds futures / Investing.com Fed monitor",
+      "note": "9/16 FOMC。其余主要为 +25bp 加息概率 40.7%。"
+    },
+    "fomcHikePct": {
+      "value": 40.7,
+      "unit": "%",
+      "vintage": "intraday",
+      "asOf": "2026-08-24T18:45:00Z",
+      "source": "CME Fed Funds futures"
+    },
+    "buyback": {
+      "value": true,
+      "vintage": "event",
+      "asOf": "2026-08-24",
+      "source": "US Treasury 扩容长端buyback；CNBC 称或动用TGA",
+      "note": "9/9–11/4 窗口，单次上限至少从 $20亿 提至 $40亿。"
+    },
+    "cpi": {
+      "value": 332.813,
+      "vintage": "official",
+      "asOf": "2026-07-01",
+      "source": "FRED CPIAUCSL 2026-07",
+      "note": "用于折算1982-84美元金价，不编造历史百分位。"
+    },
+    "ppi": {
+      "value": 284.057,
+      "vintage": "official",
+      "asOf": "2026-07-01",
+      "source": "FRED PPIACO 2026-07"
+    },
+    "etfTonnes": {
+      "value": 46.7,
+      "unit": "t",
+      "vintage": "weekly",
+      "asOf": "2026-08-21",
+      "source": "World Gold Council，经 Reuters/Kitco 2026-08-24 引述",
+      "note": "截至8/21当周，10个月最大单周需求。明确为周度，不冒充日度。"
+    },
+    "etfUsdBn": {
+      "value": 6.38,
+      "unit": "USD bn",
+      "vintage": "weekly",
+      "asOf": "2026-08-21",
+      "source": "WGC，经 The Hindu BusinessLine / Reuters 引述",
+      "note": "流入 $7.56bn，流出 $1.18bn，净流入约 $6.38bn。Reuters约整为 $6.4bn。"
+    },
+    "etfNaBn": {
+      "value": 4.37,
+      "vintage": "weekly",
+      "asOf": "2026-08-21",
+      "source": "WGC via The Hindu BusinessLine",
+      "note": "北美/美国 $4.37bn。"
+    },
+    "etfEuBn": {
+      "value": 1.7,
+      "vintage": "weekly",
+      "asOf": "2026-08-21",
+      "source": "WGC via The Hindu BusinessLine",
+      "note": "欧洲合计约 $1.7bn（英 $1.07bn、法 $0.443bn、德 $0.13bn）。"
+    },
+    "etfAsBn": {
+      "value": 0.293,
+      "vintage": "weekly",
+      "asOf": "2026-08-21",
+      "source": "WGC via The Hindu BusinessLine",
+      "note": "亚洲约 $0.293bn（中国 $0.28bn 等）。"
+    },
+    "etfHoldingsT": {
+      "value": 4068,
+      "vintage": "monthly",
+      "asOf": "2026-07-31",
+      "source": "WGC Gold ETF Flows: July 2026",
+      "note": "7月末全球持仓 4,068 吨、AUM 约 $530bn。非本周最新。"
+    },
+    "gld": {
+      "value": 425.59,
+      "vintage": "intraday",
+      "asOf": "2026-08-24T19:17:49Z",
+      "source": "NYSE Arca GLD",
+      "note": "代理黄金ETF价格，非Dealer GEX。"
+    }
+  }
+}
