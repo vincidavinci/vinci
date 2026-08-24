@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Gold Gamma Stress Dashboard v4</title>
+<link rel="stylesheet" href="assets/app.css"/>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <div>
+      <h1>Gold Gamma Stress Dashboard</h1>
+      <div class="sub">黄金方向 × Dealer GEX × Gamma Flip × Call Wall × Skew × IV × 财政/信用 × 相对估值 × ETF资金</div>
+      <div class="stamp">快照：<span id="asOfLabel">加载中</span> · <span id="coverage"></span></div>
+    </div>
+    <div class="badge">v4 · 可计算层实时打分 · 缺失GEX不编造</div>
+  </div>
+
+  <div class="grid">
+    <div class="card kpi">
+      <div class="label">GOLD</div>
+      <div class="value" id="kpi-gold-value">—</div>
+      <div id="kpi-gold-sub" class="small"></div>
+      <div id="kpi-gold-spark"></div>
+    </div>
+    <div class="card kpi">
+      <div class="label">NET DEALER GEX</div>
+      <div class="value" id="kpi-gex-value">—</div>
+      <div class="small" id="kpi-gex-sub"></div>
+    </div>
+    <div class="card kpi">
+      <div class="label">ZERO GAMMA / FLIP</div>
+      <div class="value" id="kpi-flip-value">—</div>
+      <div class="small" id="kpi-flip-sub"></div>
+    </div>
+    <div class="card kpi">
+      <div class="label">CALL WALL</div>
+      <div class="value" id="kpi-wall-value">—</div>
+      <div class="small" id="kpi-wall-sub"></div>
+    </div>
+    <div class="card kpi">
+      <div class="label">GAMMA STRESS</div>
+      <div class="value" id="kpi-gamma-value">—</div>
+      <div class="small" id="kpi-gamma-sub"></div>
+    </div>
+    <div class="card kpi">
+      <div class="label">总风险灯</div>
+      <div class="value" id="kpi-light-value">—</div>
+      <div class="small" id="kpi-light-sub"></div>
+    </div>
+
+    <div class="card section">
+      <div class="title">Gold Gamma Stress Index · 0–100</div>
+      <div class="meter null" id="gamma-meter"><span id="gamma-meter-bar"></span></div>
+      <div class="legend">
+        <span id="gamma-meter-label"></span>
+        <span>0–30 正 Gamma</span>
+        <span>30–60 Gamma 脆弱</span>
+        <span>60–80 Negative Gamma</span>
+        <span>80–100 Reverse Gamma Squeeze 高风险</span>
+      </div>
+    </div>
+
+    <div class="card quarter">
+      <div class="title">Macro Stress</div>
+      <div class="scorebox"><div class="big" id="macro-val">—</div><div class="small" id="macro-note"></div></div>
+      <div class="meter"><span id="macro-bar"></span></div>
+    </div>
+    <div class="card quarter">
+      <div class="title">Dalio Fiscal</div>
+      <div class="scorebox"><div class="big" id="fiscal-val">—</div><div class="small" id="fiscal-note"></div></div>
+      <div class="meter"><span id="fiscal-bar"></span></div>
+    </div>
+    <div class="card quarter">
+      <div class="title">Valuation Risk</div>
+      <div class="scorebox"><div class="big" id="value-val">—</div><div class="small" id="value-note"></div></div>
+      <div class="meter"><span id="value-bar"></span></div>
+    </div>
+    <div class="card quarter">
+      <div class="title">Gamma 核心</div>
+      <p class="note small">GEX / Flip / Call Wall / Skew / 1M IV / Vanna / Charm 没有交叉可复核的公开当日值，因此 <b>不评分、不假设、不借用过期第三方页面</b>。</p>
+    </div>
+
+    <div class="card half">
+      <div class="title">核心期权结构</div>
+      <table>
+        <thead><tr><th>指标</th><th>当前</th><th>风险</th></tr></thead>
+        <tbody id="opt-body"></tbody>
+      </table>
+    </div>
+    <div class="card half">
+      <div class="title">四个正式监控信号</div>
+      <div id="signals"></div>
+    </div>
+
+    <div class="card third">
+      <div class="title">宏观确认层</div>
+      <table><tbody id="macro-body"></tbody></table>
+    </div>
+    <div class="card third">
+      <div class="title">财政 / Dalio 共振层</div>
+      <div class="triad" id="triad"></div>
+      <table><tbody id="fiscal-body"></tbody></table>
+    </div>
+    <div class="card third">
+      <div class="title">黄金相对估值层</div>
+      <table><tbody id="val-body"></tbody></table>
+    </div>
+
+    <div class="card half">
+      <div class="title">黄金 ETF 资金层</div>
+      <table>
+        <thead><tr><th>指标</th><th>最新</th><th>日期</th></tr></thead>
+        <tbody id="etf-body"></tbody>
+      </table>
+      <p class="small">若仅有可靠周度数据，明确标注“最新周度”，不冒充日度。</p>
+    </div>
+    <div class="card half">
+      <div class="title">机器判断 · 三状态</div>
+      <p class="note" id="machine-now"></p>
+      <p class="note" id="machine-healthy"><span class="green">🟢 相对健康：</span> Gold↑ / GEX正或稳定 / DXY不强 / TIPS不升。</p>
+      <p class="note" id="machine-fragile"><span class="yellow">🟡 容易剧烈波动：</span> GEX&lt;0，但Gold仍在Zero Gamma上方。负Gamma不是看跌，而是“油门更灵敏”。当前因 Gamma 缺失 + 估值偏贵，默认落在观察档。</p>
+      <p class="note" id="machine-reverse"><span class="red">🔴 Reverse Gamma警报：</span> Gold↓ + GEX&lt;0 + 跌破Zero Gamma/Call Wall；若DXY↑、TIPS↑、MOVE↑，机械对冲与宏观利空可能共振。</p>
+      <p class="note"><b>一句话：</b>负Gamma + Gold上涨可能是向上Gamma squeeze；负Gamma + Gold下跌才可能形成反向Gamma放大。</p>
+    </div>
+
+    <div class="card section">
+      <div class="title">数据更新面板 <span class="small">改数后即时重算 · 可还原快照</span></div>
+      <form id="data-form" class="formgrid" autocomplete="off">
+        <label class="small">Gold<input id="f-gold" inputmode="decimal"></label>
+        <label class="small">日涨跌 %<input id="f-goldDayPct" inputmode="decimal"></label>
+        <label class="small">5日 %<input id="f-gold5dPct" inputmode="decimal"></label>
+        <label class="small">20日 %<input id="f-gold20dPct" inputmode="decimal"></label>
+        <label class="small">Net GEX bn<input id="f-netGexBn" placeholder="暂无可靠数据"></label>
+        <label class="small">Zero Gamma<input id="f-zeroGamma" placeholder="暂无可靠数据"></label>
+        <label class="small">Call Wall<input id="f-callWall" placeholder="暂无可靠数据"></label>
+        <label class="small">上一期 GEX bn<input id="f-netGexPrevBn" placeholder="用于 Signal A"></label>
+        <label class="small">1M IV %<input id="f-iv1m" placeholder="暂无可靠数据"></label>
+        <label class="small">Skew
+          <select id="f-skew">
+            <option value="">暂无可靠数据</option>
+            <option value="call_rich">Call 偏贵</option>
+            <option value="neutral">中性</option>
+            <option value="put_rich">Put 偏贵</option>
+          </select>
+        </label>
+        <label class="small">MOVE<input id="f-move" placeholder="上一日收盘"></label>
+        <label class="small">30Y %<input id="f-y30"></label>
+        <label class="small">2Y %<input id="f-y2"></label>
+        <label class="small">30Y 当日 bp<input id="f-y30ChangeBp"></label>
+        <label class="small">2Y 当日 bp<input id="f-y2ChangeBp"></label>
+        <label class="small">10Y TIPS %<input id="f-tips"></label>
+        <label class="small">TIPS 当日 bp<input id="f-tipsChangeBp"></label>
+        <label class="small">DXY<input id="f-dxy"></label>
+        <label class="small">DXY 日涨跌 %<input id="f-dxyChangePct"></label>
+        <label class="small">WTI $/bbl<input id="f-wti"></label>
+        <label class="small">HO $/gal<input id="f-heatingOil"></label>
+        <label class="small">Gold/Silver 用银价<input id="f-silver"></label>
+        <label class="small">Gold/Copper 用铜价<input id="f-copper"></label>
+        <label class="small">FOMC Hold %<input id="f-fomcHoldPct"></label>
+        <label class="small">FOMC Hike %<input id="f-fomcHikePct"></label>
+        <label class="small">Buyback 扩容<input id="f-buyback" type="checkbox" style="width:auto"></label>
+      </form>
+      <div class="actions">
+        <button type="button" id="btn-reset">还原为 8/24 快照</button>
+      </div>
+    </div>
+
+    <div class="card section">
+      <div class="title">📖 大白话：看板阅读顺序</div>
+      <p class="note"><b>① 先看金价方向：</b>Gamma主要是油门，不负责决定第一方向。 <b>② 看GEX正负：</b>正Gamma偏刹车，负Gamma偏放大。 <b>③ 看关键线：</b>Zero Gamma与Call Wall决定Dealer对冲是否可能变性。 <b>④ 看宏观补刀：</b>DXY、TIPS、MOVE、30Y决定技术回撤会不会升级。 <b>⑤ 看估值与资金：</b>Gold/Silver、Gold/WTI、Gold/Copper判断贵不贵；ETF净流入判断高估值是否仍有真实资金承接。</p>
+    </div>
+
+    <div class="card section">
+      <div class="title">数据状态与来源说明</div>
+      <p class="note">
+        最新快照时间：2026-08-24 15:08 ET。COMEX 金/银/铜、NYMEX WTI/HO、ICE DXY、CBOE 30Y/10Y 使用同一市场时段公开报价。
+        5日/20日金价涨跌使用 COMEX 连续日线。10Y TIPS 使用 FRED DFII10 最新官方日值（8/20，2.35%）。
+        MOVE 使用 ICE BofA 上一日完整收盘（8/21，73.4），8/24 该源尚未给出可核实K线。
+        ETF 资金流为截至 8/21 当周（WGC，经 Reuters/Kitco 与 The Hindu BusinessLine 引述）：+46.7 吨 / +$6.38bn，北美 $4.37bn、欧洲 $1.7bn、亚洲 $0.293bn。
+        Diesel Crack 为 NYMEX HO×42 − WTI 的同刻计算值，不是官方 Crack 指数。
+        GEX、Zero Gamma、Call Wall、Skew、1M IV、Vanna、Charm 没有找到足够可靠的公开当日实测值，因此均显示“暂无可靠数据”。
+        9月 FOMC 概率来自 CME Fed Funds 期货（Investing.com 8/24 14:45 ET）：Hold 59.3% / Hike 40.7%。
+      </p>
+    </div>
+  </div>
+
+  <div class="footer">
+    数据快照已更新至 2026-08-24 可核实公开数据；盘中值、官方收盘、周度、月报均逐项标日期。
+    公开数据通常无法精确还原 Dealer 净仓位；GEX、Zero Gamma、Call Wall、Skew、Vanna、Charm 没有可靠数据时必须标记“暂无可靠数据”。
+    正式日更使用前一个完整交易日，并逐项标日期。当前 Gamma 核心数据缺失，因此 Gamma Stress Index 暂不评分。
+    Macro / Fiscal / Valuation 三层仅使用已核实输入。风险指数仅为监控模型，不构成投资建议。
+  </div>
+</div>
+<script src="assets/engine.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
